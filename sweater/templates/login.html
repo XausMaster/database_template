@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Hesaba Giris{% endblock %}
+{% block body %}
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% if message %}
+            {% for category, flash in message %}
+                <div class="flash">
+                    <p class="alert-{{ category }}">{{ flash }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<div class="input-box">
+    <form method="POST">
+        <p>Hesaba Giris</p>
+        <input class="text" type="text" placeholder="Ad | Email" name="user_name_email">
+        <input class="text" type="password" placeholder="Sifre" name="password"><br>
+        <input class="lick" type="submit" value="Daxil Ol">
+        <a class="lick-search" href="/register">Qeydiyyatdan Kec</a>
+        <a class="lick" href="/reset_password">sifrenizi Unutmusunuz ?</a>
+    </form>
+</div>
+{% endblock %}

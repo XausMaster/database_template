@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Statistika{% endblock %}
+{% block body %}
+    <h3>Mehsullar haqqinda melumatlar:</h3>
+
+    <p>Butun Mehsullarin qiymeti:</p>
+    <p>{{ all_sum }}</p>
+
+    <hr>
+
+    <p>Ortalama Mehsullarin qiymeti:</p>
+    <p>{{ sum }}</p>
+
+    <hr>
+
+    <p>Mehsul Sayi:</p>
+    <p>{{ melumatlar|length }}</p>
+
+    <hr>
+
+    <p>Kateqoriya Sayi:</p>
+    <p>{{ count }}</p>
+
+    <hr style="height:5px; background-color: gray;">
+
+    <h3>Kateqoriyalara aid mehsullarin qiymetleri:</h3>
+
+    <p>GPU</p>
+    <p>{{ gpu }}</p>
+
+    <hr>
+
+    <p>Makbuk</p>
+    <p>{{ makbuk }}</p>
+
+    <hr>
+
+    <p>Telefon</p>
+    <p>{{ telefon }}</p>
+
+    <hr>
+
+    <p>Noutbuk</p>
+    <p>{{ noutbuk }}</p>
+
+    <hr>
+
+    <p>Televizor</p>
+    <p>{{ televizor }}</p>
+
+    <hr>
+
+
+{% endblock %}

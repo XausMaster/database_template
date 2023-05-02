@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Add{% endblock %}
+{% block body %}
+    <form method="POST" enctype="multipart/form-data">
+        <p>Mehsulu elave edin</p>
+        <input class="text" type="text" placeholder="Ad" name="ad">
+        <input class="text" type="text" placeholder="Kateqoriya" name="kateqoriya">
+        <input class="text" type="text" placeholder="Qiymet" name="qiymet">
+        <input type="file" name="file">
+        <textarea placeholder="Informasiya" name="info"></textarea>
+        <textarea placeholder="Genis Informasiya" name="big-info"></textarea>
+        <input class="lick" type="submit" value="Gonder">
+    </form>
+{% endblock %}

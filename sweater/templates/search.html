@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Show{% endblock %}
+{% block body %}
+    <style>
+    th, td {
+      border:1px solid black;
+    }
+    table {
+        height: 10px;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    </style>
+    <form method="POST">
+        <input class="search" type="text" placeholder="Search" name="search">
+        <input class="lick-search" type="submit" value="Search">
+        <br>
+    </form>
+    <form action="/show/filter" method="GET">
+        <label>Choose a filter type:</label>
+        <select name="filter" onchange="location=this.value;"> in
+            <option value="" selected disabled></option>
+            <option value="{{ url_for('filter', txt = 'u-l') }}" name="u-l">Higher -> Lower</option>
+            <option value="{{ url_for('filter', txt = 'l-u') }}" name="l-u">Lower -> Higher</option>
+            {% for mehsul in melumatlar %}
+                <option value="{{ url_for('filter', txt = mehsul.kateqoriya) }}" name= mehsul.kateqoriya>{{ mehsul.kateqoriya }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <h4>Mehsullar:</h4>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Kateqoriya</th>
+            <th>Qiymet</th>
+            <th>Melumat</th>
+        </tr>
+
+        {% for mehsul in mehsull %}
+            <tr>
+                <td><p>{{ mehsul.id }}</p></td>
+                <td><a href="/show/{{ mehsul.id }}">{{ mehsul.ad }}</a></td>
+                <td><a href="{{ url_for('filter', txt = mehsul.kateqoriya) }}">{{ mehsul.kateqoriya }}</a></td>
+                <td><p>{{ mehsul.qiymet }}</p></td>
+                {% set m = mehsul.info.split('\r\n') %}
+                <td>
+                {% for i in m %}
+                    <p>{{ i }}</p>
+                {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="lick">
+        <a href="/add">Add</a>
+    </div>
+    <form action="/show/statistika" method="POST">
+        <input class="lick-show" type="submit" value="Statistika">
+    </form>
+{% endblock %}

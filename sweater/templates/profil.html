@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Profil{% endblock %}
+{% block body %}
+    <h1>User Info:</h1>
+        <img class="profile" src="data:{{ user.mimetype }};base64,{{ image }}" width="100px" height="100px">
+        <h3>Username</h3>
+            <p>{{ user.user_name }}</p>
+        <h3>Email</h3>
+            <p>{{ user.email }}</p>
+        <h3>Info</h3>
+<h4>Edit Info:</h4>
+<form method="POST" action="/profil" enctype="multipart/form-data">
+    <textarea name="new_info">{{ user.info }}</textarea>
+    <input type="file" name="profile_image">
+    <input type="submit" class="lick" value="Submit">
+</form>
+
+   <table>
+        <thead>
+            <tr>
+                <th>Sekil</th>
+                <th>Id</th>
+                <th>Ad</th>
+                <th>Kateqoriya</th>
+                <th>Qiymet</th>
+                <th>Melumat</th>
+                <th>Redakte</th>
+                <th>Satici</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mehsul in melumatlar %}
+                <tr>
+                    <td><img class="preview" src="mehsul_image/{{ mehsul.id }}"></td>
+                    <td><p>{{ mehsul.id }}</p></td>
+                    <td><a href="/show/{{ mehsul.id }}">{{ mehsul.ad }}</a></td>
+                    <td><a href="{{ url_for('filter', txt = mehsul.kateqoriya) }}">{{ mehsul.kateqoriya }}</a></td>
+                    <td><p>{{ mehsul.qiymet }}</p></td>
+                    {% set m = mehsul.info.split('\r\n') %}
+                    <td>
+                        {% for i in m %}
+                            <a href="{{ url_for('info', id = mehsul.id, user = mehsul.seller) }}">{{ i }}</a>
+                        {% endfor %}
+                    </td>
+                    <td><a href="{{ url_for('edit', id = mehsul.id) }}">Redakte Et</a></td>
+                    <td><a href="{{ url_for('seller_profile', user = mehsul.seller) }}">{{ mehsul.seller }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<div class="lick">
+    <a href="/reset_password">Sifreni Yenile</a>
+</div>
+<div class="lick">
+    <a href="{{ url_for('add', user=user.user_name) }}">Add</a>
+</div>
+<div class="lick-show">
+    <a href="/show">Show</a>
+</div>
+<div class="lick-delete">
+    <a href="/logout">Cixis</a>
+</div>
+{% endblock %}

@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+*{
+    margin: 5px;
+    padding: 0px;
+    font-family: Ubuntu;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+table {
+    height: 10px;
+    border-collapse: collapse;
+    text-align: center;
+}
+  
+th {
+    height: 30px;
+    width: 150px;
+}
+
+select {
+    width: 150px;
+    height: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+.home {
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+}
+
+.search {
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+
+textarea {
+    width: 180px;
+    height: 50px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+input[type=submit] {
+    width: 70px;
+    height: 22px;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    border-left: 2px solid gray;
+    transition: 0.3s;
+}
+
+.lick,
+.lick-edit,
+.lick-show,
+.lick-search,
+.lick-delete {
+    width: 60px;
+    border-radius: 3px;
+    border: none;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgb(241, 241, 241);
+    border-left: 2px solid gray;
+    transition: 0.3s;
+}
+
+.a:hover{
+    width: 150px;
+}
+
+.lick-delete{
+    width: 50px !important;
+}
+
+.lick-edit{
+    transition: .3s;
+}
+
+.lick:hover {
+    width: 80px;
+    background-color: rgb(127, 255, 92);
+    border-left: 2px solid rgb(53, 223, 6);
+    transition: 0.3s;
+}
+
+.lick-show:hover {
+    width: 80px;
+    background-color: rgb(92, 136, 255);
+    border-left: 2px solid rgb(6, 60, 223);
+    transition: 0.3s;
+}
+
+.lick-search:hover {
+    width: 80px;
+    background-color: rgb(252, 255, 92);
+    border-left: 2px solid rgb(223, 191, 6);
+    transition: 0.3s;
+}
+
+.lick-delete:hover {
+    cursor: pointer;
+    width: 65px !important;
+    background-color: rgb(255, 92, 92);
+    border-left: 2px solid rgb(223, 6, 6);
+    transition: 0.3s;
+}
+
+.lick-edit:hover {
+    width: 180px !important;
+    cursor: pointer;
+    animation-name: edit;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    transition: 0.3s;
+}
+
+.lick a{
+    color: black;
+    text-decoration: none;
+}
+
+.flash {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.alert-info {
+  width: 180px;
+  background-color: blue;
+  color: white;
+}
+
+.alert-error {
+  width: 180px;
+  background-color: tomato;
+  color: white;
+}
+
+.profile {
+    width: 100px;
+    height: 100px;
+    border: solid;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.comment {
+    width: max-content;
+    height: 80px;
+    border: solid;
+    border-color: #ccc;
+    border-radius: 10px;
+}
+
+div.input-box {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    margin-left: calc(100% / 2 - 150px);
+    margin-top: calc(100% / 2 - 550px);
+    justify-content: space-between;
+}
+
+.preview {
+    width: 120px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+@keyframes edit {
+    0%   {background-color: rgb(255, 101, 101);}
+    20%  {background-color: rgb(255, 168, 61);}
+    40%  {background-color: rgb(122, 255, 61);}
+    60%  {background-color: rgb(61, 255, 181);}
+    80%  {background-color: rgb(61, 77, 255);}
+    100% {background-color: rgb(255, 61, 203);}
+}

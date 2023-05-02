@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}Show{% endblock %}
+{% block body %}
+    <form method="POST">
+        <input class="search" type="text" placeholder="Search" name="search">
+        <input class="lick-search" type="submit" value="Search">
+        <br>
+    </form>
+    <form action="/show/filter" method="GET">
+        <label>Choose a filter type:</label>
+        <select name="filter" onchange="location=this.value;">
+            <option value="" selected disabled></option>
+            <option value="{{ url_for('filter', txt = 'u-l') }}" name="u-l">u-l</option>
+            <option value="{{ url_for('filter', txt = 'l-u') }}" name="l-u">l-u</option>
+            {% for mehsul in melumatlar %}
+                <option value="{{ url_for('filter', txt = mehsul.kateqoriya) }}" name= mehsul.kateqoriya>{{ mehsul.kateqoriya }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <h4>Mehsullar:</h4>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sekil</th>
+                <th>Id</th>
+                <th>Ad</th>
+                <th>Kateqoriya</th>
+                <th>Qiymet</th>
+                <th>Melumat</th>
+    <!--            <th>Redakte</th>-->
+                <th>Satici</th>
+                <th>Şerhler</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mehsul in melumatlar %}
+                <tr>
+                    <td><img class="preview" src="mehsul_image/{{ mehsul.id }}"></td>
+                    <td><p>{{ mehsul.id }}</p></td>
+                    <td><a href="/show/{{ mehsul.id }}">{{ mehsul.ad }}</a></td>
+                    <td><a href="{{ url_for('filter', txt = mehsul.kateqoriya) }}">{{ mehsul.kateqoriya }}</a></td>
+                    <td><p>{{ mehsul.qiymet }}</p></td>
+                    {% set m = mehsul.info.split('\r\n') %}
+                    <td>
+                        {% for i in m %}
+                            <a href="{{ url_for('info', id = mehsul.id, user = mehsul.seller) }}">{{ i }}</a>
+                        {% endfor %}
+                    </td>
+    <!--                <td><a href="{{ url_for('edit', id = mehsul.id) }}">Redakte Et</a></td>-->
+                    <td><a href="{{ url_for('seller_profile', user = mehsul.seller) }}">{{ mehsul.seller }}</a></td>
+                    <td><a href="{{ url_for('comments', user = current_user.user_name, mehsul_id = mehsul.id) }}">Comments</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/show/statistika" method="POST">
+        <input class="lick-show" type="submit" value="Statistika">
+    </form>
+    <div class="lick-show">
+        <a href="/profil">Profile Kec</a>
+    </div>
+    <div class="lick-delete"> 
+        <a href="/logout">Cixis</a>
+    </div>
+{% endblock %}

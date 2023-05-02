@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Info{% endblock %}
+{% block body %}
+    <p>Etrafli Melumat:</p>
+    {% set info = info.split('\r\n') %}
+        {% for i in info %}
+            <p>{{ i }}</p>
+        {% endfor %}
+    {% if owner %}
+        <a class="lick-edit" href="/edit/{{id}}">Redakte Et</a>
+    {% endif %}
+{% endblock %}

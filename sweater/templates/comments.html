@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Add Comment{% endblock %}
+{% block body %}
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="bold">{{ comment.author }}</p>
+            <p>{{ comment.text }}</p>
+            {% if comment.author == user.user_name %}
+                <a class="lick-delete" href="{{ url_for('comment_delete', user = user.user_name, mehsul_id = mehsul_id, comment_id = comment.id) }}">Sil</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <form method="POST">
+        <p>Şərh elave edin</p>
+        <input class="text" type="text" placeholder="Comment" name="text">
+        <input class="lick" type="submit" value="Gonder">
+    </form>
+{% endblock %}
+
+{{ url_for('add_comment', user = mehsul.seller) }}
